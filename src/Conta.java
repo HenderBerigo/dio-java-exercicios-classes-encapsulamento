@@ -21,9 +21,9 @@ public class Conta {
     }
 
     public Conta(String setConta, double depositar) {
-        if (depositar > 500) {
+        if (depositar >= 500) {
 
-            this.chequeEspecial = depositar * 1.5;
+            this.chequeEspecial = depositar * 0.5;
         } else {
             this.chequeEspecial = 50;
         }
@@ -40,29 +40,35 @@ public class Conta {
         if (saldoTotal >= valor) {
             saldo = saldo - valor;
             System.out.println("Saque de R$ " + valor + ", feito com sucesso!");
-            System.out.println("Novo saldo é de R$ " + saldo);
+            System.out.println("Saldo atualizado: R$" + saldo);
         } else {
             System.out.println("Saldo insuficitente para sacar R$ " + valor);
+            System.out.println("Saldo atualizado: R$" + saldo);
         }
     }
 
     public double depositar(double valor) {
-        if (valor > 500) {
+        if (valor >= 500) {
 
-            this.chequeEspecial = valor * 1.5;
+            this.chequeEspecial += valor * 0.5;
         } else {
-            this.chequeEspecial = 50;
+            this.chequeEspecial += 50;
         }
-        return saldo = saldo + valor;
+        System.out.println("Depósito de R$" + valor + " feito.");
+        saldo = saldo + valor;
+        System.out.println("Saldo atualizado: R$" + saldo);
+        return saldo;
     }
 
     public void pagarBoleto(double boleto) {
         if (boleto < saldo) {
             saldo = saldo - boleto;
             System.out.println("Boleto de R$ " + boleto + " pago.");
+            System.out.println("Saldo atualizado: R$" + saldo);
 
         } else {
             System.out.println("Saldo insuficiente para pagar o boleto de R$ " + boleto);
+            System.out.println("Saldo atual: R$" + saldo);
         }
     }
 
