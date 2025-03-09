@@ -18,43 +18,52 @@ public class Main {
             escolhaMenu = scan.nextInt();
 
             switch (escolhaMenu) {
-                case 1:
-                    conta.consultaSaldo();
-                    // Menu();
-                    break;
-                case 2:
-                    conta.verificarChequeEspecial();
-                    // Menu();
-                    break;
-                case 3:
-                    System.out.print("Qual o valor para o Depósito? ");
-                    double valorDeposito = scan.nextDouble();
-                    conta.depositar(valorDeposito);
-                    // Menu();
-                    break;
-                case 4:
-                    System.out.print("Digite o valor do Boleto: ");
-                    double valorBoleto = scan.nextDouble();
-                    conta.pagarBoleto(valorBoleto);
-                    // Menu();
-                    break;
-                case 5:
-                    System.out.println("Número da Conta: " + conta.getConta());
-                    // Menu();
-                    break;
-                case 6:
-                    System.out.print("Qual o valor do saque? ");
-                    double valorSaque = scan.nextDouble();
-                    conta.sacar(valorSaque);
-                    // Menu();
-                    break;
-                case 0:
-                    System.out.println("Saindo do sitema!");
-                    break;
-                default:
-                    System.out.println("Opção inválida");
-                    // Menu();
-                    break;
+                case 1->conta.consultaSaldo();
+                case 2->conta.verificarChequeEspecial();
+                case 3->{System.out.print("Qual o valor para o Depósito? ");double valorDeposito=scan.nextDouble();conta.depositar(valorDeposito);}
+                    case 4 -> {System.out.print("Digite o valor do Boleto: ");double valorBoleto=scan.nextDouble();conta.pagarBoleto(valorBoleto);}
+                        case 5 -> System.out.println("Número da Conta: " + conta.getConta());
+                case 6->{System.out.print("Qual o valor do saque? ");double valorSaque=scan.nextDouble();conta.sacar(valorSaque);}
+                    case 0->System.out.println("Saindo do sitema!");
+                    default -> System.out.println("Opção inválida");
+
+                    // case 1:
+                    // conta.consultaSaldo();
+                    // // Menu();
+                    // break;
+                    // case 2:
+                    // conta.verificarChequeEspecial();
+                    // // Menu();
+                    // break;
+                    // case 3:
+                    // System.out.print("Qual o valor para o Depósito? ");
+                    // double valorDeposito = scan.nextDouble();
+                    // conta.depositar(valorDeposito);
+                    // // Menu();
+                    // break;
+                    // case 4:
+                    // System.out.print("Digite o valor do Boleto: ");
+                    // double valorBoleto = scan.nextDouble();
+                    // conta.pagarBoleto(valorBoleto);
+                    // // Menu();
+                    // break;
+                    // case 5:
+                    // System.out.println("Número da Conta: " + conta.getConta());
+                    // // Menu();
+                    // break;
+                    // case 6:
+                    // System.out.print("Qual o valor do saque? ");
+                    // double valorSaque = scan.nextDouble();
+                    // conta.sacar(valorSaque);
+                    // // Menu();
+                    // break;
+                    // case 0:
+                    // System.out.println("Saindo do sitema!");
+                    // break;
+                    // default:
+                    // System.out.println("Opção inválida");
+                    // // Menu();
+                    // break;
             }
         } while (escolhaMenu != 0);
         // }

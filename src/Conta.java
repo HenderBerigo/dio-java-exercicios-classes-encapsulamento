@@ -37,13 +37,22 @@ public class Conta {
 
     public void sacar(double valor) {
         var saldoTotal = saldo + chequeEspecial;
-        if (saldoTotal >= valor) {
+        if (saldo < valor && valor < saldoTotal) {
+            var valorTemp = valor - saldo;
+            saldo = 0;
+            chequeEspecial = chequeEspecial -valorTemp;
+            System.out.println("Saque de R$ " + valor + ", feito com sucesso!");
+            System.out.println("Saldo atualizado: R$" + saldo);
+            System.out.println("Cheque Especial: R$" + chequeEspecial);
+        } else if (saldo > valor) {
             saldo = saldo - valor;
             System.out.println("Saque de R$ " + valor + ", feito com sucesso!");
             System.out.println("Saldo atualizado: R$" + saldo);
+
         } else {
             System.out.println("Saldo insuficitente para sacar R$ " + valor);
             System.out.println("Saldo atualizado: R$" + saldo);
+            System.out.println("Cheque Especial: R$" + chequeEspecial);
         }
     }
 
