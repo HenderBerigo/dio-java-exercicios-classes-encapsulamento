@@ -23,9 +23,9 @@ public class Conta {
     public Conta(String setConta, double depositar) {
         if (depositar >= 500) {
 
-            this.chequeEspecial = depositar * 0.5;
+            this.chequeEspecial = depositar * (-0.5);
         } else {
-            this.chequeEspecial = 50;
+            this.chequeEspecial =  -50;
         }
         this.saldo = saldo + depositar;
         this.conta = setConta;
@@ -36,11 +36,12 @@ public class Conta {
     }
 
     public void sacar(double valor) {
-        var saldoTotal = saldo + chequeEspecial;
-        if (saldo < valor && valor < saldoTotal) {
+        var saldoTotal = saldo + (-chequeEspecial);
+        if (saldo < valor && valor <= saldoTotal) {
             var valorTemp = valor - saldo;
             saldo = 0;
-            chequeEspecial = chequeEspecial -valorTemp;
+            chequeEspecial = chequeEspecial - (valorTemp*2);
+            chequeEspecial += chequeEspecial *0.2;
             System.out.println("Saque de R$ " + valor + ", feito com sucesso!");
             System.out.println("Saldo atualizado: R$" + saldo);
             System.out.println("Cheque Especial: R$" + chequeEspecial);
@@ -56,18 +57,22 @@ public class Conta {
         }
     }
 
-    public double depositar(double valor) {
-        if (valor >= 500) {
+        public double depositar(double valor) {
+            if(saldo < 0 && chequeEspecial < 0){ // Saldo e ChequeEspecial menor que 0
+                chequeEspecial += chequeEspecial + valor;
+            }
+            if (valor >= 500) {
 
-            this.chequeEspecial += valor * 0.5;
-        } else {
-            this.chequeEspecial += 50;
+                this.chequeEspecial = chequeEspecial - (valor * 0.5);
+            } else {
+                this.chequeEspecial = chequeEspecial - 50;
+            }
+            System.out.println("Depósito de R$" + valor + " feito.");
+            saldo = saldo + valor;
+            System.out.println("Saldo atualizado: R$" + saldo);
+            return saldo;
         }
-        System.out.println("Depósito de R$" + valor + " feito.");
-        saldo = saldo + valor;
-        System.out.println("Saldo atualizado: R$" + saldo);
-        return saldo;
-    }
+    
 
     public void pagarBoleto(double boleto) {
         if (boleto < saldo) {
@@ -82,7 +87,7 @@ public class Conta {
     }
 
     public void verificarChequeEspecial() {
-        if (chequeEspecial > 0) {
+        if (chequeEspecial < 0) {
             System.out.println("Cheque Especial em uso de R$ " + chequeEspecial);
 
         } else {

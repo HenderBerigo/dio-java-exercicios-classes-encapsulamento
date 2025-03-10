@@ -6,10 +6,12 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("*** Sistema Conta ***");
 
-        System.out.print("Digite o número da Conta: ");
-        var numConta = scan.nextLine();
-        System.out.print("Digite o valor do Depósito: ");
-        var deptositoIncial = scan.nextDouble();
+        //System.out.print("Digite o número da Conta: ");
+        // var numConta = scan.nextLine();
+        var numConta = "531";
+        //System.out.print("Digite o valor do Depósito: ");
+        // var deptositoIncial = scan.nextDouble();
+        var deptositoIncial = 500;
         var conta = new Conta(numConta, deptositoIncial);
 
         int escolhaMenu;
