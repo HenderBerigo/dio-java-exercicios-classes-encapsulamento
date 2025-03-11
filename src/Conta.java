@@ -40,7 +40,7 @@ public class Conta {
         if (saldo < valor && valor <= saldoTotal) {
             var valorTemp = valor - saldo;
             saldo = 0;
-            chequeEspecial = chequeEspecial - (valorTemp*2);
+            chequeEspecial = chequeEspecial + (valorTemp);
             chequeEspecial += chequeEspecial *0.2;
             System.out.println("Saque de R$ " + valor + ", feito com sucesso!");
             System.out.println("Saldo atualizado: R$" + saldo);
@@ -58,18 +58,22 @@ public class Conta {
     }
 
         public double depositar(double valor) {
-            if(saldo < 0 && chequeEspecial < 0){ // Saldo e ChequeEspecial menor que 0
-                chequeEspecial += chequeEspecial + valor;
-            }
-            if (valor >= 500) {
-
-                this.chequeEspecial = chequeEspecial - (valor * 0.5);
+            if(saldo == 0 && chequeEspecial < 0){ // Saldo e ChequeEspecial menor que 0
+                valor = valor + chequeEspecial;
+                saldo = saldo + valor;
+                chequeEspecial = 0;
             } else {
-                this.chequeEspecial = chequeEspecial - 50;
-            }
-            System.out.println("Depósito de R$" + valor + " feito.");
-            saldo = saldo + valor;
-            System.out.println("Saldo atualizado: R$" + saldo);
+                if (valor >= 500) {
+                    
+                    this.chequeEspecial = chequeEspecial - (valor * 0.5);
+                } else {
+                    this.chequeEspecial = chequeEspecial - 50;
+                }
+                System.out.println("Depósito de R$" + valor + " feito.");
+                saldo = saldo + valor;
+                System.out.println("Saldo atualizado: R$" + saldo);
+                return saldo;
+            } 
             return saldo;
         }
     

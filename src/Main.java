@@ -1,4 +1,10 @@
 import java.util.Scanner;
+/*
+**********
+ajustar regra de negocio sobre limite para usar e limite usado
+
+**********
+*/
 
 public class Main {
     public static Scanner scan = new Scanner(System.in);
@@ -22,11 +28,17 @@ public class Main {
             switch (escolhaMenu) {
                 case 1->conta.consultaSaldo();
                 case 2->conta.verificarChequeEspecial();
-                case 3->{System.out.print("Qual o valor para o Depósito? ");double valorDeposito=scan.nextDouble();conta.depositar(valorDeposito);}
-                    case 4 -> {System.out.print("Digite o valor do Boleto: ");double valorBoleto=scan.nextDouble();conta.pagarBoleto(valorBoleto);}
-                        case 5 -> System.out.println("Número da Conta: " + conta.getConta());
-                case 6->{System.out.print("Qual o valor do saque? ");double valorSaque=scan.nextDouble();conta.sacar(valorSaque);}
-                    case 0->System.out.println("Saindo do sitema!");
+                case 3->{
+                    System.out.print("Qual o valor para o Depósito? ");double valorDeposito=scan.nextDouble();conta.depositar(valorDeposito);
+                }
+                case 4 -> {
+                        System.out.print("Digite o valor do Boleto: ");double valorBoleto=scan.nextDouble();conta.pagarBoleto(valorBoleto);
+                    }
+                case 5 -> System.out.println("Número da Conta: " + conta.getConta());
+                case 6->{
+                    System.out.print("Qual o valor do saque? ");double valorSaque=scan.nextDouble();conta.sacar(valorSaque);
+                }
+                case 0->System.out.println("Saindo do sitema!");
                     default -> System.out.println("Opção inválida");
 
                     // case 1:
